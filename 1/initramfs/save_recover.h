@@ -5,10 +5,10 @@
 #define __NR_save 404
 #define __NR_recover 405
 
-int save(int number) {
+long save(long number) {
 	return syscall(__NR_save, number);
 }
 
-int recover(void) {
+long recover(void) {
 	return syscall(__NR_recover);
 }
