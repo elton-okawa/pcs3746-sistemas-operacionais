@@ -1,21 +1,23 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
+#include <time.h>
 
 #include "kernel_malloc.h"
 
-// int array[10000000]; //funciona
-// int array[5050000]; //funciona
-// int array[6050000]; //funciona 
-// int array[6150000];  // funciona
-// int array[6200000];
 // int array3[15000000];
 int main() {
-  // (double *)malloc(sizeof(double) * 16000000);
-  // kernel_malloc(50000000L);
-  printf("while\n");
   while(1) {
-    fork();
+    // kernel_malloc(50000000L);
+    // fork();
+    long size = 180000; // 703 kB
+    // long size = 4096000L; // 16000 kB
+    long *arr = (long *)malloc(sizeof(long) * size);
+    for (long i = 0; i < size; i += 10) {
+      arr[i] = i;
+    }
+
+    sleep(1);
   }
 
   return 0;
